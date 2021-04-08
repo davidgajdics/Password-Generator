@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		24357CD625F3B5380071ABF5 /* IntroduceMySelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */; };
+		245CC23125F63C9300AE323B /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23025F63C9300AE323B /* AppTabView.swift */; };
+		245CC23425F7A02F00AE323B /* SaveNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */; };
+		245CC23726012EE500AE323B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23626012EE500AE323B /* SettingsView.swift */; };
+		245CC23A2601303D00AE323B /* TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC2392601303D00AE323B /* TouchID.swift */; };
 		24B083E325F2BC1F00B73F2A /* Password__GeneratorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B083E225F2BC1F00B73F2A /* Password__GeneratorApp.swift */; };
 		24B083E525F2BC1F00B73F2A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24B083E425F2BC1F00B73F2A /* ContentView.swift */; };
 		24B083E725F2BC2000B73F2A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24B083E625F2BC2000B73F2A /* Assets.xcassets */; };
@@ -14,6 +19,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMySelf.swift; sourceTree = "<group>"; };
+		245CC23025F63C9300AE323B /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
+		245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewPasswordView.swift; sourceTree = "<group>"; };
+		245CC23626012EE500AE323B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		245CC2392601303D00AE323B /* TouchID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchID.swift; sourceTree = "<group>"; };
+		248A5C2D26128B4100D59D0E /* Password  Generator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Password  Generator.entitlements"; sourceTree = "<group>"; };
 		24B083DF25F2BC1F00B73F2A /* Password  Generator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Password  Generator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24B083E225F2BC1F00B73F2A /* Password__GeneratorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Password__GeneratorApp.swift; sourceTree = "<group>"; };
 		24B083E425F2BC1F00B73F2A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -52,8 +63,14 @@
 		24B083E125F2BC1F00B73F2A /* Password  Generator */ = {
 			isa = PBXGroup;
 			children = (
+				248A5C2D26128B4100D59D0E /* Password  Generator.entitlements */,
 				24B083E225F2BC1F00B73F2A /* Password__GeneratorApp.swift */,
 				24B083E425F2BC1F00B73F2A /* ContentView.swift */,
+				245CC23025F63C9300AE323B /* AppTabView.swift */,
+				245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */,
+				245CC23626012EE500AE323B /* SettingsView.swift */,
+				245CC2392601303D00AE323B /* TouchID.swift */,
+				24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */,
 				24B083E625F2BC2000B73F2A /* Assets.xcassets */,
 				24B083EB25F2BC2000B73F2A /* Info.plist */,
 				24B083E825F2BC2000B73F2A /* Preview Content */,
@@ -139,6 +156,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				24B083E525F2BC1F00B73F2A /* ContentView.swift in Sources */,
+				245CC23425F7A02F00AE323B /* SaveNewPasswordView.swift in Sources */,
+				24357CD625F3B5380071ABF5 /* IntroduceMySelf.swift in Sources */,
+				245CC23A2601303D00AE323B /* TouchID.swift in Sources */,
+				245CC23726012EE500AE323B /* SettingsView.swift in Sources */,
+				245CC23125F63C9300AE323B /* AppTabView.swift in Sources */,
 				24B083E325F2BC1F00B73F2A /* Password__GeneratorApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -267,6 +289,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Password  Generator/Password  Generator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Password  Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = 2782R5CYVK;
@@ -279,6 +302,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "DavidGajdics.Password--Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,6 +313,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Password  Generator/Password  Generator.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Password  Generator/Preview Content\"";
 				DEVELOPMENT_TEAM = 2782R5CYVK;
@@ -301,6 +326,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "DavidGajdics.Password--Generator";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
