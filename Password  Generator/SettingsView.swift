@@ -14,11 +14,11 @@ struct SettingsView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color(red: 0.00, green: 0.46, blue: 0.50).ignoresSafeArea()
+                Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
                 VStack{
                     Form{
                         Toggle(isOn: $touchIdIsUnlocked) {
-                            Text("TouchID / FaceID")
+                            //action
                             }
                         if touchIdIsUnlocked {
                             TouchID()

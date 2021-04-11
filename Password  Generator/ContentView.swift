@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+// import Security
 
 struct ContentView: View {
     
@@ -21,34 +22,33 @@ struct ContentView: View {
     @State private var specialSymbols : Bool = false
     @State private var copyVisible : Bool = true
     let length = ["3","4","6","8","10","16","20"]
-    @State public var basicLength = 3
+    @State public var len : Double = 8.0
     @State private var pass = "Password Generator"
+    //let pass = SecCreateSharedWebCredentialPassword() as String?
     
     var body: some View {
         NavigationView{
             ZStack{
                 Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
-                VStack(spacing: 5){
-                    
+                
+                VStack(){
+                    Spacer(minLength: 25)
                     Group{
-                        Spacer()
                         Text("\(pass)")
                             .font(.title)
                             .bold()
                             .foregroundColor(Color.white)
-                        Spacer(minLength: 100
-                        )
+                        Spacer(minLength: 50)
+//---------------------------------
+                        // Generate
+//---------------------------------
                     VStack{
-                        
-                        
                             Button(action: {
                                 if(lowerCase && upperCase && numbers && specialSymbols == true){
                                     copyVisible = true
                                     pass = "";
-                                 //   _ = "\(length)"
-                                 //   let intlength = Int("\(length)") ?? 0
                                     let chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
-                                    for _ in (1...8) {
+                                    for _ in (1...(Int(len))) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -56,8 +56,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
-        
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -65,8 +64,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`!@#$%^&*()_-+={[}]|\"'<,>.?/")
-        
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -74,8 +72,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("abcdefghijklmnopqrstuvwxyz1234567890~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
-        
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -83,8 +80,55 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
-        
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(lowerCase && specialSymbols == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("abcdefghijklmnopqrstuvwxyz~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(upperCase && specialSymbols == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(numbers && specialSymbols == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("0123456789~!@#$%^&*()_-+={[}]|\"'<,>.?/")
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(lowerCase && upperCase == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz ")
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(lowerCase && numbers == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("abcdefghijklmnopqrstuvwxyz1234567890")
+                                    for _ in 1...(Int(len)) {
+                                        pass += String(chars.randomElement()!)
+                                    }
+                                }
+                                else if(upperCase && numbers == true){
+                                    copyVisible = true
+                                    pass = "";
+                                    let chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -92,7 +136,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("abcdefghijklmnopqrstuvwxyz")
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -100,7 +144,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -108,7 +152,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("1234567890")
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -116,7 +160,7 @@ struct ContentView: View {
                                     copyVisible = true
                                     pass = "";
                                     let chars = ("~`! @#$%^&*()_-+={[}]|\"'<,>.?/")
-                                    for _ in 1...10 {
+                                    for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
                                     }
                                 }
@@ -135,6 +179,9 @@ struct ContentView: View {
                             })
                         }
                                 HStack{
+//------------------------------------------
+                                    // Copy
+//------------------------------------------
                                     Button(action: {
                                          UIPasteboard.general.string = pass
                                      }, label: {
@@ -147,26 +194,34 @@ struct ContentView: View {
                                              .background(Color(red: 0.85, green: 0.92, blue: 0.89))
                                              .cornerRadius(10)
                                      })
-                                    
-                                    Button(action: {
-                                        // action
-                                     }, label: {
-                                         Text("Save")
+//------------------------------------------
+                                    // Save
+//-----------------------------------------
+                                        NavigationLink(
+                                            destination: SaveNewPasswordView(),
+                                            label: {
+                                                Text("Save")
                                              .font(.title3)
                                              .bold()
                                              .foregroundColor(Color(.black))
                                              .padding()
-                                            .frame(width: 171.5, height: 55, alignment: .center)
+                                             .frame(width: 171.5, height: 55, alignment: .center)
                                              .background(Color(red: 0.85, green: 0.92, blue: 0.89))
                                              .cornerRadius(10)
                                      })
                                 }
+//------------------------------------------
+                                    // Form
+//------------------------------------------
+                        Spacer()
                         Form{
-                            Picker("Password Length:", selection: $basicLength){
-                                ForEach (0 ..< self.length.count){
-                                    Text(self.length[$0])
-                                }
-                            }.pickerStyle(SegmentedPickerStyle())
+                            Slider(value: $len, in: 3...20)
+                                .colorMultiply(.green)
+                            HStack{
+                                Text("Password Length:")
+                                Spacer()
+                                Text("\(Int(len))")
+                            }
                             Toggle("Lower Case: (a-z)", isOn: $lowerCase)
                             Toggle("Upper Case: (A-Z )", isOn: $upperCase)
                             Toggle("Numbers: (0-9) ", isOn: $numbers)
@@ -177,7 +232,6 @@ struct ContentView: View {
                         }
                     }
                 }
-                Spacer()
             }.navigationTitle("Home")
         }
     }
@@ -185,6 +239,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
       ContentView()
+        .preferredColorScheme(.light)
     }
 }
 

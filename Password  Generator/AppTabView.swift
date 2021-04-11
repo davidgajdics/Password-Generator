@@ -25,7 +25,7 @@ struct AppTabView: View {
                     Image(systemName: "plus")
                     Text("Add")
                 }
-            IntroduceMySelf()
+            SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
@@ -39,7 +39,7 @@ struct AppTabView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AppTabView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 12 Pro"))
+                .previewDevice(PreviewDevice(rawValue: "iPhone 8 Plus"))
                 .previewDisplayName("iPhone 12 Pro")
         }
     }
