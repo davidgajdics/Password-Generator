@@ -16,8 +16,12 @@ struct TouchID: View {
         VStack{
             if self.isUnlocked{
                 Image("lock.open.fill")
+                    .foregroundColor(.black)
+                Text("Welcome!")
             }else{
                 Image("lock")
+                    .foregroundColor(.black)
+                Text("Please try again!")
             }
         }
         .onAppear(perform: autitencate)
@@ -27,7 +31,7 @@ struct TouchID: View {
         var error: NSError?
         
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error){
-            let reason = "We need unlock your data."
+            let reason = "Verify fingerprint to access Password Manager"
             
             context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, autheticationError in
                 DispatchQueue.main.async {

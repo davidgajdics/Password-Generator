@@ -9,7 +9,8 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    @State private var touchIdIsUnlocked = false
+    @State private var touchIdIsUnlocked = true
+    
     
     var body: some View {
         NavigationView{
@@ -18,11 +19,15 @@ struct SettingsView: View {
                 VStack{
                     Form{
                         Toggle(isOn: $touchIdIsUnlocked) {
-                            //action
+                            Text("Touch ID / Face ID")
+                            
                             }
                         if touchIdIsUnlocked {
                             TouchID()
                             }
+                        Section{
+                            
+                        }
                         }
                     }
                 }

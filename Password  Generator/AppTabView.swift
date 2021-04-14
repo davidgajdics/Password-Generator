@@ -20,7 +20,7 @@ struct AppTabView: View {
                     Image(systemName: "house")
                     Text("Home")
                 }
-            SaveNewPasswordView()
+            SavedPasswordsView()
                 .tabItem {
                     Image(systemName: "plus")
                     Text("Add")

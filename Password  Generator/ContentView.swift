@@ -21,7 +21,6 @@ struct ContentView: View {
     @State private var numbers : Bool = true
     @State private var specialSymbols : Bool = false
     @State private var copyVisible : Bool = true
-    let length = ["3","4","6","8","10","16","20"]
     @State public var len : Double = 8.0
     @State private var pass = "Password Generator"
     //let pass = SecCreateSharedWebCredentialPassword() as String?
@@ -32,6 +31,8 @@ struct ContentView: View {
                 Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
                 
                 VStack(){
+                    
+                    
                     Spacer(minLength: 25)
                     Group{
                         Text("\(pass)")
@@ -58,6 +59,7 @@ struct ContentView: View {
                                     let chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
                                     for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
+                                        UIPasteboard.general.string = pass
                                     }
                                 }
                                 else if(lowerCase && upperCase && specialSymbols == true){
@@ -221,14 +223,14 @@ struct ContentView: View {
                                 Text("Password Length:")
                                 Spacer()
                                 Text("\(Int(len))")
+                                    .font(.title3)
                             }
                             Toggle("Lower Case: (a-z)", isOn: $lowerCase)
                             Toggle("Upper Case: (A-Z )", isOn: $upperCase)
                             Toggle("Numbers: (0-9) ", isOn: $numbers)
                             Toggle("Special Symbols: (%$_§#) ", isOn: $specialSymbols)
-                        }
-                        .onAppear {
-                            UITableView.appearance().isScrollEnabled = false
+                            }.onAppear {
+                                UITableView.appearance().isScrollEnabled = false
                         }
                     }
                 }
