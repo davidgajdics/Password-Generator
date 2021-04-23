@@ -24,7 +24,7 @@ struct SaveNewPasswordView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
+                Color(red: 0.37, green: 0.58, blue: 0.60).ignoresSafeArea()
                 VStack{
                     // Some animation or photo
                     Form{

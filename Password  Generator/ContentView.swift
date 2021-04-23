@@ -6,16 +6,28 @@
 //
 
 import SwiftUI
-// import Security
+
+let coloredNavAppearance = UINavigationBarAppearance()
 
 struct ContentView: View {
     
     init() {
-        let navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        UITableView.appearance().backgroundColor = .clear
-    }
+            coloredNavAppearance.configureWithOpaqueBackground()
+            coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
+            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
+
+            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+        }
+    
+    private let colors = [
+            Color(red: 0.56, green: 0.85, blue: 0.66),
+            Color(red: 0.29, green: 0.47, blue: 0.55)
+        ]
+
+            let screenSize = UIScreen.main.bounds
+    
     @State private var lowerCase : Bool = true
     @State private var upperCase : Bool = true
     @State private var numbers : Bool = true
@@ -23,12 +35,12 @@ struct ContentView: View {
     @State private var copyVisible : Bool = true
     @State public var len : Double = 8.0
     @State private var pass = "Password Generator"
-    //let pass = SecCreateSharedWebCredentialPassword() as String?
-    
+
     var body: some View {
         NavigationView{
             ZStack{
-                Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
+                Color(red: 0.56, green: 0.85, blue: 0.66).ignoresSafeArea()
+                
                 
                 VStack(){
                     
@@ -38,8 +50,35 @@ struct ContentView: View {
                         Text("\(pass)")
                             .font(.title)
                             .bold()
-                            .foregroundColor(Color.white)
-                        Spacer(minLength: 50)
+                            .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                            
+                        Spacer()
+                        
+//------------------------------------------                                                            // Form
+//------------------------------------------
+                        Form{
+                            
+                            Toggle("Lower Case: (a-z)", isOn: $lowerCase)
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                            Toggle("Upper Case: (A-Z )", isOn: $upperCase)
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                            Toggle("Numbers: (0-9) ", isOn: $numbers)
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                            Toggle("Special Symbols: (%$_§#) ", isOn: $specialSymbols)
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                            Slider(value: $len, in: 3...20)
+                                .accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+                                .colorMultiply(Color(red: 0.56, green: 0.85, blue: 0.66))
+                            HStack{
+                                Text("Password Length:")
+                                Spacer()
+                                Text("\(Int(len))")
+                                    .font(.title3)
+                            }
+                            }.onAppear {
+                                UITableView.appearance().isScrollEnabled = false
+                            }
+                        Spacer()
 //---------------------------------
                         // Generate
 //---------------------------------
@@ -172,10 +211,10 @@ struct ContentView: View {
                                     Text("Generate")
                                         .font(.title3)
                                         .bold()
-                                        .foregroundColor(Color(.black))
+                                        .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                         .padding()
                                         .frame(width: 350, height: 55, alignment: .center)
-                                        .background(Color(red: 0.85, green: 0.92, blue: 0.89))
+                                        .background(Color(red: 0.29, green: 0.47, blue: 0.55))
                                         .cornerRadius(10)
                                 }
                             })
@@ -190,10 +229,10 @@ struct ContentView: View {
                                          Text("Copy")
                                              .font(.title3)
                                              .bold()
-                                             .foregroundColor(Color(.black))
+                                             .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                              .padding()
                                             .frame(width: 171.5, height: 55, alignment: .center)
-                                             .background(Color(red: 0.85, green: 0.92, blue: 0.89))
+                                             .background(Color(red: 0.29, green: 0.47, blue: 0.55))
                                              .cornerRadius(10)
                                      })
 //------------------------------------------
@@ -205,35 +244,19 @@ struct ContentView: View {
                                                 Text("Save")
                                              .font(.title3)
                                              .bold()
-                                             .foregroundColor(Color(.black))
+                                             .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                              .padding()
                                              .frame(width: 171.5, height: 55, alignment: .center)
-                                             .background(Color(red: 0.85, green: 0.92, blue: 0.89))
+                                             .background(Color(red: 0.29, green: 0.47, blue: 0.55))
                                              .cornerRadius(10)
-                                     })
-                                }
-//------------------------------------------
-                                    // Form
-//------------------------------------------
-                        Spacer()
-                        Form{
-                            Slider(value: $len, in: 3...20)
-                                .colorMultiply(.green)
-                            HStack{
-                                Text("Password Length:")
-                                Spacer()
-                                Text("\(Int(len))")
-                                    .font(.title3)
-                            }
-                            Toggle("Lower Case: (a-z)", isOn: $lowerCase)
-                            Toggle("Upper Case: (A-Z )", isOn: $upperCase)
-                            Toggle("Numbers: (0-9) ", isOn: $numbers)
-                            Toggle("Special Symbols: (%$_§#) ", isOn: $specialSymbols)
-                            }.onAppear {
-                                UITableView.appearance().isScrollEnabled = false
+                            })
                         }
+                        Spacer(minLength: 50)
                     }
                 }
+                .background(LinearGradient(gradient: Gradient(colors: colors),
+                   startPoint: .bottom, endPoint: .top))
+                Spacer()
             }.navigationTitle("Home")
         }
     }
@@ -245,10 +268,4 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-//content view
-    //save button
-// settings view
-    // authentication with biometrics in App.swift
-    //languages
-    //info era with IntroduceMySelfView.swift
 

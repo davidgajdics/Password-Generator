@@ -31,7 +31,8 @@ struct AppTabView: View {
                     Text("Settings")
             }
         }
-        .accentColor(Color.green)
+    
+        .accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
         .animation(.easeInOut)
     }
 }
@@ -39,8 +40,6 @@ struct AppTabView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             AppTabView()
-                .previewDevice(PreviewDevice(rawValue: "iPhone 8 Plus"))
-                .previewDisplayName("iPhone 12 Pro")
         }
     }
 }

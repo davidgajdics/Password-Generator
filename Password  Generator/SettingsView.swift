@@ -11,28 +11,22 @@ struct SettingsView: View {
     
     @State private var touchIdIsUnlocked = true
     
-    
-    var body: some View {
-        NavigationView{
-            ZStack{
-                Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
-                VStack{
-                    Form{
-                        Toggle(isOn: $touchIdIsUnlocked) {
-                            Text("Touch ID / Face ID")
-                            
-                            }
-                        if touchIdIsUnlocked {
-                            TouchID()
-                            }
-                        Section{
-                            
+var body: some View {
+    NavigationView{
+        ZStack{
+            Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
+            VStack{
+                Form{
+                    Toggle(isOn: $touchIdIsUnlocked) {
+                        Text("Touch ID / Face ID")
                         }
+                    if touchIdIsUnlocked {
+                        TouchID()
                         }
                     }
                 }
-            .navigationBarTitle("Settings")
-        }
+            }
+        }.navigationBarTitle("Settings")
     }
 }
 struct SettingsView_Previews: PreviewProvider {
@@ -40,3 +34,4 @@ struct SettingsView_Previews: PreviewProvider {
         SettingsView()
     }
 }
+

@@ -47,7 +47,7 @@ struct IntroduceMySelf: View {
                 Button(action: {
                     // action
                 }) {
-                    Text("www.davidgajdics.com")
+                    Text("www.davdevstory.com")
                         .bold()
                         .foregroundColor(Color(red: 0.07, green: 0.2, blue: 0.37))
                         .padding()
