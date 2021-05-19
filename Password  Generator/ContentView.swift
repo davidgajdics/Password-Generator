@@ -10,19 +10,20 @@ import SwiftUI
 let coloredNavAppearance = UINavigationBarAppearance()
 
 struct ContentView: View {
-    
+ 
     init() {
             coloredNavAppearance.configureWithOpaqueBackground()
             coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
         coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
-            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
+            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.16, green: 0.71, blue: 0.71, alpha: 1.00)]
 
             UINavigationBar.appearance().standardAppearance = coloredNavAppearance
             UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+            UITableView.appearance().backgroundColor = .clear
         }
-    
+
     private let colors = [
-            Color(red: 0.56, green: 0.85, blue: 0.66),
+            Color(red: 0.00, green: 0.00, blue: 0.00),
             Color(red: 0.29, green: 0.47, blue: 0.55)
         ]
 
@@ -35,24 +36,20 @@ struct ContentView: View {
     @State private var copyVisible : Bool = true
     @State public var len : Double = 8.0
     @State private var pass = "Password Generator"
+    @State private var showSheet  : Bool = false
 
     var body: some View {
         NavigationView{
             ZStack{
-                Color(red: 0.56, green: 0.85, blue: 0.66).ignoresSafeArea()
-                
-                
                 VStack(){
-                    
-                    
-                    Spacer(minLength: 25)
+                    Spacer(minLength: 100)
                     Group{
                         Text("\(pass)")
                             .font(.title)
                             .bold()
-                            .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                            .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
                             
-                        Spacer()
+                        Spacer(minLength: 50)
                         
 //------------------------------------------                                                            // Form
 //------------------------------------------
@@ -60,7 +57,7 @@ struct ContentView: View {
                             
                             Toggle("Lower Case: (a-z)", isOn: $lowerCase)
                                 .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
-                            Toggle("Upper Case: (A-Z )", isOn: $upperCase)
+                            Toggle("Upper Case: (A-Z)", isOn: $upperCase)
                                 .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
                             Toggle("Numbers: (0-9) ", isOn: $numbers)
                                 .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
@@ -78,7 +75,7 @@ struct ContentView: View {
                             }.onAppear {
                                 UITableView.appearance().isScrollEnabled = false
                             }
-                        Spacer()
+
 //---------------------------------
                         // Generate
 //---------------------------------
@@ -91,6 +88,7 @@ struct ContentView: View {
                                     for _ in (1...(Int(len))) {
                                         pass += String(chars.randomElement()!)
                                     }
+                                    UIPasteboard.general.string = pass
                                 }
                                 else if(lowerCase && upperCase && numbers == true){
                                     copyVisible = true
@@ -98,7 +96,6 @@ struct ContentView: View {
                                     let chars = ("abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890")
                                     for _ in 1...(Int(len)) {
                                         pass += String(chars.randomElement()!)
-                                        UIPasteboard.general.string = pass
                                     }
                                 }
                                 else if(lowerCase && upperCase && specialSymbols == true){
@@ -238,18 +235,23 @@ struct ContentView: View {
 //------------------------------------------
                                     // Save
 //-----------------------------------------
-                                        NavigationLink(
-                                            destination: SaveNewPasswordView(),
-                                            label: {
-                                                Text("Save")
-                                             .font(.title3)
-                                             .bold()
-                                             .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
-                                             .padding()
-                                             .frame(width: 171.5, height: 55, alignment: .center)
-                                             .background(Color(red: 0.29, green: 0.47, blue: 0.55))
-                                             .cornerRadius(10)
-                            })
+                                    Button(action: {
+                                        self.showSheet = true
+                                    }, label: {
+                                        Text("Save")
+                                     .font(.title3)
+                                     .bold()
+                                     .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                                     .padding()
+                                     .frame(width: 171.5, height: 55, alignment: .center)
+                                     .background(Color(red: 0.29, green: 0.47, blue: 0.55))
+                                     .cornerRadius(10)
+                                    })
+                                    .sheet(isPresented: $showSheet){
+                                        NewPassword(onDismiss: {
+                                            self.showSheet = false
+                                        })
+                                    }
                         }
                         Spacer(minLength: 50)
                     }
@@ -261,11 +263,65 @@ struct ContentView: View {
         }
     }
 }
+
+//------------------------------------------
+                        // Upcoming window
+//-----------------------------------------
+
+
+struct NewPassword : View {
+    
+    var onDismiss: () -> ()
+    
+    @State private var website : String = ""
+    @State private var username : String = ""
+    @State private var password : String = "\([UIPasteboard.general.string])"
+    @State private var notes : String = ""
+    
+    var body: some View {
+        NavigationView{
+            ZStack{
+                
+            
+            VStack(){
+                Spacer(minLength: 50)
+                    Form{
+                        TextField("Website: example.com", text: $website)
+                        TextField("Username: user / ID", text: $username)
+                        TextField("Passwor: Hello World", text: $password)
+                        TextField("Notes:", text: $notes)
+                    }
+                
+                Button(action: {
+                    self.onDismiss()
+                    // stortage data
+                }, label: {
+                    Text("Save")
+                        .font(.title3)
+                        .bold()
+                        .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                        .padding()
+                        .frame(width: 350, height: 55, alignment: .center)
+                        .background(Color(red: 0.29, green: 0.47, blue: 0.55))
+                        .cornerRadius(10)
+                })
+                Spacer(minLength: 50)
+            }
+                    }
+            .navigationTitle("Add new Password")
+            
+        }
+    }
+}
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
       ContentView()
         .preferredColorScheme(.light)
+        .environment(\.locale, .init(identifier: "fr"))
     }
 }
+
+
 
 

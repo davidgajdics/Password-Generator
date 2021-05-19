@@ -8,57 +8,53 @@
 import SwiftUI
 
 struct IntroduceMySelf: View {
-    init() {
-        let navBarAppearance = UINavigationBar.appearance()
-        navBarAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-              }
     
-    var body: some View {
-        NavigationView{
-        ZStack{
-            Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
-            VStack{
-                Spacer()
-                Image("davidgajdics")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 200, height: 200)
-                    .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
-                Text("David Gajdics")
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .bold()
-                    .foregroundColor(.white)
-                Text("Junior iOS Developer")
-                    .font(.footnote)
-                    .foregroundColor(.white)
+    init() {
+        
+            coloredNavAppearance.configureWithOpaqueBackground()
+            coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
+            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.16, green: 0.71, blue: 0.71, alpha: 1.00)]
 
-                        Spacer()
-                Button(action: {
-                    // action
-                }) {
-                    Text("gajdics.david@hotmail.com")
-                        .bold()
-                        .foregroundColor(Color(red: 0.07, green: 0.2, blue: 0.37))
-                        .padding()
-                        .background(Color(red: 0.83, green: 0.88, blue: 0.92))
-                        .cornerRadius(1.0)
-                }
-                Button(action: {
-                    // action
-                }) {
-                    Text("www.davdevstory.com")
-                        .bold()
-                        .foregroundColor(Color(red: 0.07, green: 0.2, blue: 0.37))
-                        .padding()
-                        .background(Color(red: 0.83, green: 0.88, blue: 0.92))
-                        .cornerRadius(1.0)
-                }
-                Spacer()
-                    }
-                Spacer()
-                }.navigationBarTitle("Contact")
+        
+            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+            UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+            UITableView.appearance().backgroundColor = .clear
         }
+
+    private let colors = [
+            Color(red: 0.00, green: 0.00, blue: 0.00),
+            Color(red: 0.29, green: 0.47, blue: 0.55)
+        ]
+
+            let screenSize = UIScreen.main.bounds
+
+var body: some View {
+    NavigationView{
+        ZStack{
+            VStack{
+                Group{
+                    Image("davidgajdics")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200, alignment: .center)
+                        .clipShape(Circle())
+                        }
+                    Text("David Gajdics")
+                        .font(.title)
+                        .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+                    Text("Junior iOS Developer")
+                        .font(.title3)
+                        .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+                }
+           
+            }
+        .background(LinearGradient(gradient: Gradient(colors: colors),
+                                    startPoint: .bottom, endPoint: .top))
+        .navigationTitle("Contact")
+        
+        }
+    
     }
 }
 struct IntroduceMySelf_Previews: PreviewProvider {

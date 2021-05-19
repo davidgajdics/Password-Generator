@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		24357CD625F3B5380071ABF5 /* IntroduceMySelf.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */; };
 		245CC23125F63C9300AE323B /* AppTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23025F63C9300AE323B /* AppTabView.swift */; };
-		245CC23425F7A02F00AE323B /* SaveNewPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */; };
 		245CC23726012EE500AE323B /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC23626012EE500AE323B /* SettingsView.swift */; };
 		245CC23A2601303D00AE323B /* TouchID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245CC2392601303D00AE323B /* TouchID.swift */; };
 		2464C09D2623B8B700BA737C /* SavedPasswordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2464C09C2623B8B700BA737C /* SavedPasswordsView.swift */; };
@@ -22,7 +21,6 @@
 /* Begin PBXFileReference section */
 		24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMySelf.swift; sourceTree = "<group>"; };
 		245CC23025F63C9300AE323B /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
-		245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveNewPasswordView.swift; sourceTree = "<group>"; };
 		245CC23626012EE500AE323B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		245CC2392601303D00AE323B /* TouchID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchID.swift; sourceTree = "<group>"; };
 		2464C09C2623B8B700BA737C /* SavedPasswordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedPasswordsView.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 				24B083E225F2BC1F00B73F2A /* Password__GeneratorApp.swift */,
 				24B083E425F2BC1F00B73F2A /* ContentView.swift */,
 				245CC23025F63C9300AE323B /* AppTabView.swift */,
-				245CC23325F7A02F00AE323B /* SaveNewPasswordView.swift */,
 				2464C09C2623B8B700BA737C /* SavedPasswordsView.swift */,
 				245CC23626012EE500AE323B /* SettingsView.swift */,
 				245CC2392601303D00AE323B /* TouchID.swift */,
@@ -159,7 +156,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				24B083E525F2BC1F00B73F2A /* ContentView.swift in Sources */,
-				245CC23425F7A02F00AE323B /* SaveNewPasswordView.swift in Sources */,
 				24357CD625F3B5380071ABF5 /* IntroduceMySelf.swift in Sources */,
 				245CC23A2601303D00AE323B /* TouchID.swift in Sources */,
 				245CC23726012EE500AE323B /* SettingsView.swift in Sources */,
