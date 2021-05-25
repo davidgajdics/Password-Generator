@@ -30,31 +30,20 @@ struct IntroduceMySelf: View {
             let screenSize = UIScreen.main.bounds
 
 var body: some View {
-    NavigationView{
+    NavigationView {
         ZStack{
             VStack{
-                Group{
-                    Image("davidgajdics")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 200, height: 200, alignment: .center)
-                        .clipShape(Circle())
-                        }
-                    Text("David Gajdics")
-                        .font(.title)
-                        .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
-                    Text("Junior iOS Developer")
-                        .font(.title3)
-                        .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+                Image(systemName: "davidgajdics")
+                    Form{
+                        
                 }
-           
+                .background(LinearGradient(gradient: Gradient(colors: colors),
+                                            startPoint: .bottom, endPoint: .top))
+                .navigationTitle("Contact")
             }
-        .background(LinearGradient(gradient: Gradient(colors: colors),
-                                    startPoint: .bottom, endPoint: .top))
-        .navigationTitle("Contact")
-        
         }
-    
+    .accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+    }
     }
 }
 struct IntroduceMySelf_Previews: PreviewProvider {

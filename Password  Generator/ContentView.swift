@@ -29,13 +29,13 @@ struct ContentView: View {
 
             let screenSize = UIScreen.main.bounds
     
-    @State private var lowerCase : Bool = true
-    @State private var upperCase : Bool = true
-    @State private var numbers : Bool = true
-    @State private var specialSymbols : Bool = false
+    @AppStorage ("Lower Case") private var lowerCase : Bool = true
+    @AppStorage ("Upper Case") private var upperCase : Bool = true
+    @AppStorage ("Numbers") private var numbers : Bool = true
+    @AppStorage ("Special Symbols") private var specialSymbols : Bool = false
     @State private var copyVisible : Bool = true
-    @State public var len : Double = 8.0
-    @State private var pass = "Password Generator"
+    @AppStorage ("Length") public var len : Double = 8.0
+    @AppStorage ("Password Generator") private var pass = "Password Generator"
     @State private var showSheet  : Bool = false
 
     var body: some View {
@@ -75,6 +75,7 @@ struct ContentView: View {
                             }.onAppear {
                                 UITableView.appearance().isScrollEnabled = false
                             }
+                        Spacer()
 
 //---------------------------------
                         // Generate
@@ -210,9 +211,9 @@ struct ContentView: View {
                                         .bold()
                                         .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                         .padding()
-                                        .frame(width: 350, height: 55, alignment: .center)
+                                        .frame(width: 380, height: 50, alignment: .center)
                                         .background(Color(red: 0.29, green: 0.47, blue: 0.55))
-                                        .cornerRadius(10)
+                                        .cornerRadius(8)
                                 }
                             })
                         }
@@ -228,9 +229,9 @@ struct ContentView: View {
                                              .bold()
                                              .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                              .padding()
-                                            .frame(width: 171.5, height: 55, alignment: .center)
+                                            .frame(width: 185, height: 50, alignment: .center)
                                              .background(Color(red: 0.29, green: 0.47, blue: 0.55))
-                                             .cornerRadius(10)
+                                             .cornerRadius(8)
                                      })
 //------------------------------------------
                                     // Save
@@ -243,9 +244,9 @@ struct ContentView: View {
                                      .bold()
                                      .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
                                      .padding()
-                                     .frame(width: 171.5, height: 55, alignment: .center)
+                                     .frame(width: 185, height: 50, alignment: .center)
                                      .background(Color(red: 0.29, green: 0.47, blue: 0.55))
-                                     .cornerRadius(10)
+                                     .cornerRadius(8)
                                     })
                                     .sheet(isPresented: $showSheet){
                                         NewPassword(onDismiss: {
@@ -273,8 +274,8 @@ struct NewPassword : View {
     
     var onDismiss: () -> ()
     
-    @State private var website : String = ""
-    @State private var username : String = ""
+    @AppStorage("website") private var website : String = ""
+    @AppStorage("username") private var username : String = ""
     @State private var password : String = "\([UIPasteboard.general.string])"
     @State private var notes : String = ""
     
@@ -284,7 +285,7 @@ struct NewPassword : View {
                 
             
             VStack(){
-                Spacer(minLength: 50)
+                Spacer()
                     Form{
                         TextField("Website: example.com", text: $website)
                         TextField("Username: user / ID", text: $username)
@@ -305,7 +306,7 @@ struct NewPassword : View {
                         .background(Color(red: 0.29, green: 0.47, blue: 0.55))
                         .cornerRadius(10)
                 })
-                Spacer(minLength: 50)
+                Spacer()
             }
                     }
             .navigationTitle("Add new Password")
