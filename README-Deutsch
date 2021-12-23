@@ -1,0 +1,8 @@
+23.12.2021
+
+Hallo!
+
+Hier ist mein erstes Projekt, ein Password Manager. Die App sollte ursprünglich ein Password-Generator sein,
+aber ich habe noch weitere Fuktionalitäten eingebaut. Die Benutzeroberfläche wird kompeltt neugestalltet und
+und die Daten mit Core Data verschlüsselt (KriptoKit) geschpeichert. Die App wird in SwiftUI entwickelt und
+auf iPhone (classic + fullscreen) und iPad optimalisiert, bzw auf mein eigenes iPhone getestet.
