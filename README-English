@@ -1,0 +1,9 @@
+Hello!
+
+Here is my first Project, an Password Manager. The app should be -originally- a Password Manger,
+but i implemented new Features. The user interface is redesigned, the user-data are encrypted with 
+CryptoKit and saved with Core Data. The app is in SwiftUi developed and tested on iPhone. 
+
+Konzept.pdf is a new GUI Plan.
+
+More Commits >> coming soon.
