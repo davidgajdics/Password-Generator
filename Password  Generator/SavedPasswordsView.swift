@@ -10,20 +10,11 @@ import SwiftUI
 struct SavedPasswordsView: View {
     
     init() {
-            coloredNavAppearance.configureWithOpaqueBackground()
-            coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
-            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.16, green: 0.71, blue: 0.71, alpha: 1.00)]
-
-            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
+            coloredNavAppearance.backgroundColor = UIColor(red: 0.37, green: 0.67, blue: 0.66, alpha: 1.00)
+        
             UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
             UITableView.appearance().backgroundColor = .clear
         }
-
-    private let colors = [
-            Color(red: 0.00, green: 0.00, blue: 0.00),
-            Color(red: 0.29, green: 0.47, blue: 0.55)
-        ]
 
             let screenSize = UIScreen.main.bounds
     
@@ -34,21 +25,18 @@ struct SavedPasswordsView: View {
     var body: some View {
         NavigationView{
             ZStack{
-                //Color(red: 0.09, green: 0.30, blue: 0.28).ignoresSafeArea()
                 
                 VStack{
-                    
+                    Spacer(minLength: 15)
                     Group{
 //--------------------------------
                     //Search bar
 //--------------------------------
                         HStack{
+                            
                             TextField("Search" ,text: $search )
-                                .padding(8)
-                                .padding(.horizontal, 20)
-                                .background(Color(.white))
-                                .cornerRadius(8)
-                                .padding(.horizontal, 15)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .padding(.horizontal, 10)
                                 .onTapGesture {
                                     self.isEditing = true
                                 }
@@ -70,7 +58,7 @@ struct SavedPasswordsView: View {
                  
                                 }) {
                                     Text("Cancel")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(.black)
                                         .bold()
                                         .font(.title3)
                                         
@@ -78,48 +66,40 @@ struct SavedPasswordsView: View {
                                 .padding(.trailing, 10)
                                 .transition(.move(edge: .trailing))
                                 .animation(.default)
-                               
                             }
+                            
                             Spacer()
+                            
                         }
                         
-                        
-//--------------------------------
-                    //DataObject
-//--------------------------------
+                        //--------------------------------
+                            //DataObject
+                        //--------------------------------
                         Form{
-                            VStack{
-                                Section(header: Text("")){
-                                    HStack{
-                                        Text("Website:")
-                                            Spacer()
-                                        Text("davdevstory.com")
-                                            .foregroundColor(.gray)
-                                            .padding()
-                                    }
-                                    Divider()
-                                    HStack{
-                                        Text("Username:")
-                                        Spacer()
-                                        Text("LMA-7165")
-                                            .foregroundColor(.gray)
-                                            .padding()
-                                    }
-                                    Divider()
-                                    Button(action: {
-                                        
-                                    }, label: {
-                                        Text("details")
-                                            .frame(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
-                                            .foregroundColor(.pink)
-                                    })
-                                }
+                            NavigationLink(destination: Example1View()){
+                                Text("Twitter")
+                                    .padding()
+                            }
+                            NavigationLink(destination: Example1View()){
+                                Text("Clubhouse")
+                                    .padding()
+                            }
+                            NavigationLink(destination: Example1View()){
+                                Text("LinkedIn")
+                                    .padding()
+                            }
+                            NavigationLink(destination: Example1View()){
+                                Text("Duolingo")
+                                    .padding()
+                            }
+                            NavigationLink(destination: Example1View()){
+                                Text("Twitch")
+                                    .padding()
                             }
                         }
                     }
-                }.background(LinearGradient(gradient: Gradient(colors: colors),
-                                            startPoint: .bottom, endPoint: .top))
-                                         Spacer()
+                }
+                Spacer()
                 .navigationTitle("Passwords")
             }
         }

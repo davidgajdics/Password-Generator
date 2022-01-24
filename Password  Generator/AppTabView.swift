@@ -9,32 +9,27 @@ import SwiftUI
 
 struct AppTabView: View {
     
-    init() {
-        UITableView.appearance().backgroundColor = .clear
-    }
-    
     var body: some View {
         TabView{
-            ContentView()
-                .tabItem {
-                    Image(systemName: "house")
-                    Text("Home")
-                }
-            
             SavedPasswordsView()
                 .tabItem {
-                    Image(systemName: "plus")
-                    Text("Add")
+                    Image(systemName: "folder")
+                    Text("Passwords")
                 }
+            
+            ContentView()
+                .tabItem {
+                    Image(systemName: "plus")
+                    Text("Generate")
+                }
+            
             SettingsView()
                 .tabItem {
                     Image(systemName: "gear")
                     Text("Settings")
             }
-        }
-    
-        .accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
-        .animation(.easeInOut)
+        }.accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+            .animation(.default)
     }
 }
 struct AppTabView_Previews: PreviewProvider {

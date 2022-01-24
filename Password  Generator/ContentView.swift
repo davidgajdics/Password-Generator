@@ -6,28 +6,21 @@
 //
 
 import SwiftUI
+import UIKit
 
 let coloredNavAppearance = UINavigationBarAppearance()
+class sendData: ObservableObject {
+    @Published var pass = ""
+}
 
 struct ContentView: View {
  
     init() {
-            coloredNavAppearance.configureWithOpaqueBackground()
-            coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
-            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.16, green: 0.71, blue: 0.71, alpha: 1.00)]
-
-            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-            UITableView.appearance().backgroundColor = .clear
+        coloredNavAppearance.backgroundColor = UIColor(red: 0.58, green: 0.82, blue: 0.80, alpha: 1.00)
+        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.02, green: 0.01, blue: 0.01, alpha: 1.00)]
+        UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
+        UITableView.appearance().backgroundColor = .clear
         }
-
-    private let colors = [
-            Color(red: 0.00, green: 0.00, blue: 0.00),
-            Color(red: 0.29, green: 0.47, blue: 0.55)
-        ]
-
-            let screenSize = UIScreen.main.bounds
     
     @AppStorage ("Lower Case") private var lowerCase : Bool = true
     @AppStorage ("Upper Case") private var upperCase : Bool = true
@@ -37,43 +30,47 @@ struct ContentView: View {
     @AppStorage ("Length") public var len : Double = 8.0
     @AppStorage ("Password Generator") private var pass = "Password Generator"
     @State private var showSheet  : Bool = false
+    @State public var showExample1View = false
 
     var body: some View {
+        
         NavigationView{
             ZStack{
                 VStack(){
-                    Spacer(minLength: 100)
+                    Spacer(minLength: 50)
                     Group{
                         Text("\(pass)")
                             .font(.title)
                             .bold()
-                            .foregroundColor(Color(red: 0.16, green: 0.71, blue: 0.71))
+                            .foregroundColor(Color.black)
                             
                         Spacer(minLength: 50)
                         
-//------------------------------------------                                                            // Form
+//------------------------------------------
+                        // Form
 //------------------------------------------
                         Form{
                             
                             Toggle("Lower Case: (a-z)", isOn: $lowerCase)
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.37, green: 0.67, blue: 0.66)))
                             Toggle("Upper Case: (A-Z)", isOn: $upperCase)
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.37, green: 0.67, blue: 0.66)))
                             Toggle("Numbers: (0-9) ", isOn: $numbers)
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.37, green: 0.67, blue: 0.66)))
                             Toggle("Special Symbols: (%$_§#) ", isOn: $specialSymbols)
-                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.16, green: 0.71, blue: 0.71)))
+                                .toggleStyle(SwitchToggleStyle(tint: Color(red: 0.37, green: 0.67, blue: 0.66)))
                             Slider(value: $len, in: 3...20)
-                                .accentColor(Color(red: 0.16, green: 0.71, blue: 0.71))
-                                .colorMultiply(Color(red: 0.56, green: 0.85, blue: 0.66))
+                                .accentColor(Color(red: 0.58, green: 0.82, blue: 0.80))
+                                .colorMultiply(Color(red: 0.37, green: 0.67, blue: 0.66))
                             HStack{
                                 Text("Password Length:")
                                 Spacer()
                                 Text("\(Int(len))")
                                     .font(.title3)
-                            }
+                                }
                             }.onAppear {
                                 UITableView.appearance().isScrollEnabled = false
+    
                             }
                         Spacer()
 
@@ -209,10 +206,10 @@ struct ContentView: View {
                                     Text("Generate")
                                         .font(.title3)
                                         .bold()
-                                        .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                                        .foregroundColor(Color.black)
                                         .padding()
                                         .frame(width: 380, height: 50, alignment: .center)
-                                        .background(Color(red: 0.29, green: 0.47, blue: 0.55))
+                                        .background(Color(red: 0.58, green: 0.82, blue: 0.80))
                                         .cornerRadius(8)
                                 }
                             })
@@ -227,99 +224,45 @@ struct ContentView: View {
                                          Text("Copy")
                                              .font(.title3)
                                              .bold()
-                                             .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                                             .foregroundColor(Color.black)
                                              .padding()
                                             .frame(width: 185, height: 50, alignment: .center)
-                                             .background(Color(red: 0.29, green: 0.47, blue: 0.55))
+                                             .background(Color(red: 0.58, green: 0.82, blue: 0.80))
                                              .cornerRadius(8)
                                      })
 //------------------------------------------
                                     // Save
 //-----------------------------------------
+                                    
                                     Button(action: {
-                                        self.showSheet = true
+                                        self.showExample1View.toggle()
+                                        
                                     }, label: {
                                         Text("Save")
                                      .font(.title3)
                                      .bold()
-                                     .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
+                                     .foregroundColor(Color.black)
                                      .padding()
                                      .frame(width: 185, height: 50, alignment: .center)
-                                     .background(Color(red: 0.29, green: 0.47, blue: 0.55))
+                                     .background(Color(red: 0.58, green: 0.82, blue: 0.80))
                                      .cornerRadius(8)
                                     })
-                                    .sheet(isPresented: $showSheet){
-                                        NewPassword(onDismiss: {
-                                            self.showSheet = false
-                                        })
+                                        .sheet(isPresented: $showExample1View){
+                                            Example1View()
                                     }
-                        }
+                                }
+                            }
+                    
                         Spacer(minLength: 50)
+                    
                     }
-                }
-                .background(LinearGradient(gradient: Gradient(colors: colors),
-                   startPoint: .bottom, endPoint: .top))
-                Spacer()
-            }.navigationTitle("Home")
-        }
-    }
-}
-
-//------------------------------------------
-                        // Upcoming window
-//-----------------------------------------
-
-
-struct NewPassword : View {
-    
-    var onDismiss: () -> ()
-    
-    @AppStorage("website") private var website : String = ""
-    @AppStorage("username") private var username : String = ""
-    @State private var password : String = "\([UIPasteboard.general.string])"
-    @State private var notes : String = ""
-    
-    var body: some View {
-        NavigationView{
-            ZStack{
-                
-            
-            VStack(){
-                Spacer()
-                    Form{
-                        TextField("Website: example.com", text: $website)
-                        TextField("Username: user / ID", text: $username)
-                        TextField("Passwor: Hello World", text: $password)
-                        TextField("Notes:", text: $notes)
-                    }
-                
-                Button(action: {
-                    self.onDismiss()
-                    // stortage data
-                }, label: {
-                    Text("Save")
-                        .font(.title3)
-                        .bold()
-                        .foregroundColor(Color(red: 0.56, green: 0.85, blue: 0.66))
-                        .padding()
-                        .frame(width: 350, height: 55, alignment: .center)
-                        .background(Color(red: 0.29, green: 0.47, blue: 0.55))
-                        .cornerRadius(10)
-                })
-                Spacer()
+                }.navigationTitle("Generate")
             }
-                    }
-            .navigationTitle("Add new Password")
-            
         }
     }
-}
-
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
       ContentView()
-        .preferredColorScheme(.light)
-        .environment(\.locale, .init(identifier: "fr"))
     }
 }
 

@@ -9,26 +9,6 @@ import SwiftUI
 
 struct SettingsView: View {
     
-    init() {
-        
-            coloredNavAppearance.configureWithOpaqueBackground()
-            coloredNavAppearance.backgroundColor = UIColor(red: 0.29, green: 0.47, blue: 0.55, alpha: 1.00)
-        coloredNavAppearance.titleTextAttributes = [.foregroundColor: UIColor(red: 0.56, green: 0.85, blue: 0.66, alpha: 1.00)]
-            coloredNavAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor(red: 0.16, green: 0.71, blue: 0.71, alpha: 1.00)]
-
-        
-            UINavigationBar.appearance().standardAppearance = coloredNavAppearance
-            UINavigationBar.appearance().scrollEdgeAppearance = coloredNavAppearance
-            UITableView.appearance().backgroundColor = .clear
-        }
-
-    private let colors = [
-            Color(red: 0.00, green: 0.00, blue: 0.00),
-            Color(red: 0.29, green: 0.47, blue: 0.55)
-        ]
-
-            let screenSize = UIScreen.main.bounds
-    
     @AppStorage ("Biometrics") private var touchIdIsUnlocked = false
     @State private var showingAlert = false
     var languages = ["English","Deutsch","Magyar"]
@@ -68,8 +48,6 @@ var body: some View {
                         
                     }
                 }
-                .background(LinearGradient(gradient: Gradient(colors: colors),
-                                            startPoint: .bottom, endPoint: .top))
                 .navigationTitle("Settings")
                 .toolbar {
                     ToolbarItem(placement: .navigationBarTrailing) {
