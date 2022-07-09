@@ -22,13 +22,13 @@ struct ContentView: View {
         UITableView.appearance().backgroundColor = .clear
         }
     
-    @AppStorage ("Lower Case") private var lowerCase : Bool = true
-    @AppStorage ("Upper Case") private var upperCase : Bool = true
-    @AppStorage ("Numbers") private var numbers : Bool = true
-    @AppStorage ("Special Symbols") private var specialSymbols : Bool = false
+    @AppStorage ("Lower Case") public var lowerCase : Bool = true
+    @AppStorage ("Upper Case") public var upperCase : Bool = true
+    @AppStorage ("Numbers") public var numbers : Bool = true
+    @AppStorage ("Special Symbols") public var specialSymbols : Bool = false
     @State private var copyVisible : Bool = true
     @AppStorage ("Length") public var len : Double = 8.0
-    @AppStorage ("Password Generator") private var pass = "Password Generator"
+    @AppStorage ("Password Generator") public var pass = "Password Generator"
     @State private var showSheet  : Bool = false
     @State public var showExample1View = false
 

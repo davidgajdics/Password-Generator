@@ -20,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E53EA852876D96600F8B828 /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroduceMySelf.swift; sourceTree = "<group>"; };
 		245CC23025F63C9300AE323B /* AppTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabView.swift; sourceTree = "<group>"; };
 		245CC23626012EE500AE323B /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 				2464C09C2623B8B700BA737C /* SavedPasswordsView.swift */,
 				245CC23626012EE500AE323B /* SettingsView.swift */,
 				24971F3827867A0E00ACE3CC /* Example1View.swift */,
+				0E53EA852876D96600F8B828 /* MyPlayground.playground */,
 				245CC2392601303D00AE323B /* TouchID.swift */,
 				24357CD525F3B5380071ABF5 /* IntroduceMySelf.swift */,
 				24B083E625F2BC2000B73F2A /* Assets.xcassets */,
